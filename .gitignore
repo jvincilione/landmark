@@ -32,6 +32,8 @@
 npm-debug.log
 testem.log
 /typings
+/audio
+/sermons-audio
 
 # e2e
 /e2e/*.js
