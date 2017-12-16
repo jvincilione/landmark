@@ -1,4 +1,5 @@
 # Landmark
+Landmark Baptist Church Website
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
 
@@ -25,3 +26,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+>>>>>>> d6c48bc0bfdac3d55c6f873fa9895884f34194da
