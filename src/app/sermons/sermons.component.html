@@ -12,6 +12,27 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sermons</h4>
+          <ngx-datatable [rows]="sermons"
+                         [limit]="10">
+            <ngx-datatable-column [prop]="'speaker'"
+                                  [name]="'Speaker'">
+            </ngx-datatable-column>
+            <ngx-datatable-column [prop]="'title'"
+                                  [name]="'Title'">
+            </ngx-datatable-column>
+            <ngx-datatable-column [prop]="'sermon_date'"
+                                  [name]="'Date'">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value | date:'short'}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [prop]="'download_link'"
+                                  [name]="'Download'">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <a href="{{getDownloadUrl(value)}}">Download</a>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
         </div>
       </div>
     </div>

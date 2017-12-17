@@ -22,7 +22,7 @@ endif;
 $title = $_POST['title'];
 $date = $_POST['date'];
 
-$downloadUrl = $folder_name . strtolower(str_replace(' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $title))) . '-' . $date;
+$downloadUrl = '/sermons-audio/' . strtolower(str_replace(' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $title))) . '-' . $date;
 
 if (strpos($date,'/') !== false) {
   $exp = explode('/', $date);
