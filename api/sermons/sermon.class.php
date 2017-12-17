@@ -7,10 +7,11 @@ class Sermon {
   public $sermon_date;
   public $type;
   public $downloadUrl;
+  public $db;
 
   // sets up the database connection
   private function setupDb(){
-    include('../db/config.inc');
+    include('../db/config.php');
   }
 
   public function getSermons(){
