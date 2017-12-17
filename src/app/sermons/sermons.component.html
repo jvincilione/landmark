@@ -13,9 +13,12 @@
         <div class="card-body">
           <h4 class="card-title">Sermons</h4>
           <ngx-datatable class="material"
+                         *ngIf="sermons && sermons.length"
                          [rows]="sermons"
                          [columnMode]="'force'"
+                         [headerHeight]="50"
                          [footerHeight]="50"
+                         [rowHeight]="50"
                          [limit]="20">
             <ngx-datatable-column [prop]="'speaker'"
                                   [name]="'Speaker'">
