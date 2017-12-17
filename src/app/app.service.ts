@@ -9,7 +9,7 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   getSermons(): Observable<any> {
-    return this.http.get('http://www.landmarkbaptistchurch-sr.com/sermon.php')
+    return this.http.get('/api/sermons/sermon.php')
             .pipe(map(sermons => sermons));
   }
 

@@ -1,6 +1,6 @@
 <?php
 header("Content-Type:application/json");
-require('../db/constants');
+require('../db/constants.php');
 require('./sermon.class.php');
 
 $sermons = new Sermon;
