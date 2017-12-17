@@ -13,7 +13,9 @@
         <div class="card-body">
           <h4 class="card-title">Sermons</h4>
           <ngx-datatable [rows]="sermons"
-                         [limit]="10">
+                         [columnMode]="'flex'"
+                         [footerHeight]="50"
+                         [limit]="20">
             <ngx-datatable-column [prop]="'speaker'"
                                   [name]="'Speaker'">
             </ngx-datatable-column>
@@ -23,7 +25,7 @@
             <ngx-datatable-column [prop]="'sermon_date'"
                                   [name]="'Date'">
               <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date:'short'}}
+                {{value | date:'fullDate'}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column [prop]="'download_link'"
