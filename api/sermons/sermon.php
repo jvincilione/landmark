@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST'):
   $sermons = new Sermon;
   $sermons->type = "Audio";
   try {
-
     if ($_SERVER['REQUEST_METHOD'] === 'GET'):
       $sermons->getSermons();
       $response['data'] = $sermons->result;
