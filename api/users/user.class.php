@@ -67,7 +67,7 @@ class User {
     $this->setupDb();
     if (isset($this->username) && isset($this->password)):
       try {
-        $guid = getGUID();
+        $guid = $this->getGUID();
         $sql = $this->db->prepare(" INSERT INTO users (username, password, guid)
                                     VALUES (?, ?, ?)");
         $sql->bindParam(1, $this->username);
