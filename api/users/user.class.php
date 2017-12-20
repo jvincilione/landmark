@@ -6,6 +6,8 @@ class User {
   public $password;
   public $id;
   public $guid;
+  public $fullName;
+  public $position;
 
   // sets up the database connection
   private function setupDb(){
@@ -16,7 +18,7 @@ class User {
     $this->setupDb();
     if (isset($this->username) && isset($this->password)):
       try {
-        $sql = $this->db->prepare(" SELECT username, kp_user, guid
+        $sql = $this->db->prepare(" SELECT username, kp_user, guid, full_name, position
                                     FROM users
                                     WHERE username = ? AND password = ?");
         $hashPass = md5($this->password);
@@ -25,6 +27,8 @@ class User {
         $sql->execute();
         $results = $sql->fetch(PDO::FETCH_ASSOC);
         $this->result = $sql->rowCount() === 1 ? $results : 'Failed';
+        $sql = null;
+        $this->db = null;
       } catch(Exception $e) {
         $this->result = $e;
         exit;
@@ -46,6 +50,8 @@ class User {
         $sql->bindParam(2, $this->username);
         $sql->execute();
         $result = $sql->fetchColumn() === 1 ? true : false;
+        $sql = null;
+        $this->db = null;
       } catch (Exception $e) {
         $result = false;
       }
@@ -56,10 +62,12 @@ class User {
   public function getUsers() {
     $this->setupDb();
     try {
-      $sql = $this->db->prepare(" SELECT username, kp_user
+      $sql = $this->db->prepare(" SELECT username, kp_user, full_name, position
                                   FROM users");
       $sql->execute();
       $results = $sql->fetchAll(PDO::FETCH_ASSOC);
+      $sql = null;
+      $this->db = null;
     } catch(Exception $e) {
       $this->result = $e;
       exit;
@@ -72,12 +80,17 @@ class User {
     if (isset($this->username) && isset($this->password)):
       try {
         $guid = $this->getGUID();
-        $sql = $this->db->prepare(" INSERT INTO users (username, password, guid)
-                                    VALUES (?, ?, ?)");
+        $sql = $this->db->prepare(" INSERT INTO users (username, password, guid, full_name, position)
+                                    VALUES (?, ?, ?, ?, ?)");
+        $hashPass = md5($this->password);
         $sql->bindParam(1, $this->username);
-        $sql->bindParam(2, md5($this->password));
+        $sql->bindParam(2, $hashPass);
         $sql->bindparam(3, $guid);
+        $sql->bindparam(4, $this->fullName);
+        $sql->bindparam(5, $this->position);
         $sql->execute();
+        $sql = null;
+        $this->db = null;
       } catch(Exception $e) {
         $this->result = $e;
         exit;
@@ -96,6 +109,8 @@ class User {
                                     WHERE kp_user = ?");
         $sql->bindParam(1, $this->id);
         $sql->execute();
+        $sql = null;
+        $this->db = null;
       } catch(Exception $e) {
         $this->result = $e;
         exit;

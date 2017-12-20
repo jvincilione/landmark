@@ -1,7 +1,8 @@
 {
   "/api": {
-    "target": "http://landmarkbaptistchurch-sr.com/sermon.php",
+    "target": "http://landmarkbaptistchurch-sr.com/",
     "secure": false,
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "changeOrigin": true
   }
 }

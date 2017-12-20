@@ -1,7 +1,5 @@
 <?php
 function upload() {
-  $obj = file_get_contents('php://input');
-  $json = json_decode($obj);
   $response = array();
 
   // this file is included in another file that requires the User class,
@@ -29,8 +27,8 @@ function upload() {
       $die = true;
     endif;
 
-    $title = $json->title;
-    $date = $json->date;
+    $title = $_POST['title'];
+    $date = $_POST['date'];
 
     $downloadUrl = '/sermons-audio/' . strtolower(str_replace(' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $title))) . '-' . $date;
 
@@ -45,7 +43,7 @@ function upload() {
     $sermon = new Sermon;
     $sermon->title = $title;
     $sermon->sermon_date = $date;
-    $sermon->speaker = $json->speaker;
+    $sermon->speaker = $_POST['speaker'];
     $sermon->type = "Audio";
 
     if(!file_exists($downloadUrl) && !isset($die)):

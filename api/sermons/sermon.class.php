@@ -25,6 +25,8 @@ class Sermon {
       $results->bindParam(1, $this->type);
       $results->execute();
       $this->result = $results->fetchAll(PDO::FETCH_ASSOC);
+      $results = null;
+      $this->db = null;
     } catch(Exception $e) {
       $this->result = $e;
       exit;
@@ -45,6 +47,8 @@ class Sermon {
         $sql->bindParam(4, $this->speaker);
         $sql->bindParam(5, $this->sermon_date);
         $sql->execute();
+        $sql = null;
+        $this->db = null;
       } catch(Exception $e) {
         $this->result = $e;
         exit;
@@ -63,6 +67,8 @@ class Sermon {
                                     WHERE id = ?");
         $sql->bindParam(1, $this->id);
         $sql->execute();
+        $sql = null;
+        $this->db = null;
       } catch(Exception $e) {
         $this->result = $e;
         exit;
