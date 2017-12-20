@@ -32,6 +32,8 @@ try {
     $json = json_decode($obj);
     $user->username = $json->username;
     $user->password = $json->password;
+    $user->fullName = $json->fullName || '';
+    $user->position = $json->position || '';
     $user->addUser();
 
     $response['data'] = $user->result;

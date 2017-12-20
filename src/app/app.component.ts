@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,16 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   isAdmin = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private location: Location) {
   }
 
   ngOnInit() {
-    if (this.router.url.indexOf('admin') > -1) {
-      this.isAdmin = true;
-    }
+    this.router.events.subscribe((eve) => {
+      if (this.location.path().indexOf('admin') > -1) {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    });
   }
 }

@@ -1,0 +1,36 @@
+<nav class="side-navbar">
+  <div class="sidebar-header d-flex align-items-center">
+    <div class="title">
+      <h1 class="h4">{{user.full_name}}</h1>
+      <p>{{user.position}}</p>
+    </div>
+  </div>
+  <ul class="list-unstyled">
+    <li>
+      <a aria-expanded="false" data-toggle="collapse" (click)="isSermonCollapsed = !isSermonCollapsed">
+        <i class="fa fa-microphone"></i> Sermons
+      </a>
+      <ul class="collapse list-unstyled" [collapse]="isSermonCollapsed">
+        <li>
+          <a [routerLink]="['/admin', 'sermon']">Sermon List</a>
+        </li>
+        <li>
+          <a [routerLink]="['/admin', 'sermon', 'add']">Add Sermon</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a aria-expanded="false" data-toggle="collapse" (click)="isUserCollapsed = !isUserCollapsed">
+        <i class="fa fa-users"></i> Users
+      </a>
+      <ul class="collapse list-unstyled " [collapse]="isUserCollapsed">
+        <li>
+          <a [routerLink]="['/admin', 'user']">User List</a>
+        </li>
+        <li>
+          <a [routerLink]="['/admin', 'user', 'add']">Add User</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

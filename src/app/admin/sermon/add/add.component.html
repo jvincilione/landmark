@@ -1,32 +1,60 @@
-<form>
-  <div class="panel-body">
-    <div class="form-group">
-      <label for="title">Sermon Title</label>
-      <input class="form-control required" type="text" [(ngModel)]="title" name="title" placeholder="Is there not a cause?" />
-    </div>
-    <div class="form-group">
-      <label for="Date">Sermon Date</label>
-      <input class="form-control" type="date" [(ngModel)]="date" id="date" name="date" (blur)="checkDate()" />
-      <p class="help-block">If datepicker is unavailable, please enter date in yyyy-mm-dd format. IE: 2015-05-31. The datepicker should be available
-        in Google Chrome, Firefox and Safari.</p>
-      <p class="help-block" id="dateError" style="color:red;">Enter date in 2015-10-31 (yyyy-mm-dd) format.</p>
-    </div>
-    <div class="form-group">
-      <label for="speaker">Speaker</label>
-      <input class="form-control" type="text" [(ngModel)]="speaker" name="speaker" placeholder="Pastor John Opferman" />
-      <p class="help-block">Examples: Pastor John Opferman, Bro. Drake, etc.</p>
-      <div id="email-check"></div>
-    </div>
-    <div class="form-group">
-      <label for="mp3">Upload Sermon</label>
-      <input class="form-control" type="file" accept=".mp3" [(ngModel)]="mp3" name="mp3" />
+<div class="page">
+  <app-admin-header></app-admin-header>
+  <div class="page-content d-flex align-items-stretch">
+    <!-- Side Navbar -->
+    <app-admin-sidebar></app-admin-sidebar>
+    <div class="content-inner">
+      <!-- Page Header-->
+      <header class="page-header">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="['/admin', 'sermon']">Sermons </a>
+            </li>
+            <li class="breadcrumb-item active">Add Sermon </li>
+          </ul>
+        </div>
+      </header>
+      <section class="tables">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="title">Sermon Title</label>
+                      <input class="form-control required" type="text" [(ngModel)]="title" name="title" placeholder="Is there not a cause?" />
+                    </div>
+                    <div class="form-group">
+                      <label for="Date">Sermon Date</label>
+                      <input class="form-control" type="date" [(ngModel)]="date" id="date" name="date" />
+                      <p class="help-block">If datepicker is unavailable, please enter date in yyyy-mm-dd format. IE: 2015-05-31. The datepicker should be available
+                        in Google Chrome, Firefox and Safari.</p>
+                      <p class="help-block" id="dateError" style="color:red;">Enter date in 2015-10-31 (yyyy-mm-dd) format.</p>
+                    </div>
+                    <div class="form-group">
+                      <label for="speaker">Speaker</label>
+                      <input class="form-control" type="text" [(ngModel)]="speaker" name="speaker" placeholder="Pastor John Opferman" />
+                      <p class="help-block">Examples: Pastor John Opferman, Bro. Drake, etc.</p>
+                      <div id="email-check"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="mp3">Upload Sermon</label>
+                      <input (change)="onUpload($event)" class="form-control" type="file" accept=".mp3" name="files" />
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-primary" (click)="addSermon()">Add Sermon</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
-  <div class="panel-footer">
-    <button class="btn btn-success" >
-      <span class="fa fa-sign-in-alt"> </span> Submit</button>
-    <a class="btn btn-danger" href="#">
-      <span class="fa fa-trash"> </span> Cancel
-    </a>
-  </div>
-</form>
+  <app-admin-footer></app-admin-footer>
+</div>
+

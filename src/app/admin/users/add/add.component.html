@@ -1,0 +1,54 @@
+<div class="page">
+  <app-admin-header></app-admin-header>
+  <div class="page-content d-flex align-items-stretch">
+    <!-- Side Navbar -->
+    <app-admin-sidebar></app-admin-sidebar>
+    <div class="content-inner">
+      <!-- Page Header-->
+      <header class="page-header">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="['/admin', 'user']">Users </a>
+            </li>
+            <li class="breadcrumb-item active">Add User </li>
+          </ul>
+        </div>
+      </header>
+      <section class="tables">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="name">Full Name</label>
+                      <input class="form-control required" type="text" [(ngModel)]="name" name="name" placeholder="John Opferman" />
+                    </div>
+                    <div class="form-group">
+                      <label for="position">Position</label>
+                      <input class="form-control required" type="text" [(ngModel)]="position" name="position" placeholder="Pastor/Deacon/Layman" />
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input class="form-control required" type="text" [(ngModel)]="username" name="username" placeholder="john.opferman" />
+                    </div>
+                    <div class="form-group">
+                      <label for="pass">Pass Phrase</label>
+                      <input class="form-control required" type="password" [(ngModel)]="password" name="pass" placeholder="super secure pass phrase" />
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-primary" (click)="addUser()">Add User</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <app-admin-footer></app-admin-footer>
+</div>
