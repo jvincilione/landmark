@@ -19,10 +19,11 @@ class User {
         $sql = $this->db->prepare(" SELECT username, kp_user, guid
                                     FROM users
                                     WHERE username = ? AND password = ?");
+        $hashPass = md5($this->password);
         $sql->bindParam(1, $this->username);
-        $sql->bindParam(2, md5($this->password));
+        $sql->bindParam(2, $hashPass);
         $sql->execute();
-        $results = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $results = $sql->fetch(PDO::FETCH_ASSOC);
         $this->result = $sql->rowCount() === 1 ? $results : 'Failed';
       } catch(Exception $e) {
         $this->result = $e;
