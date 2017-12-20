@@ -18,15 +18,15 @@ class Sermon {
     $this->setupDb();
 
     try{
-      $results = $this->db->prepare(" SELECT title, sermon_date, download_link, speaker, type
+      $results = $this->db->prepare(" SELECT title, sermon_date, download_link, speaker, id
                                       FROM sermons
                                       WHERE type = ?
                                       ORDER BY sermon_date DESC ");
       $results->bindParam(1, $this->type);
       $results->execute();
       $result = $results->fetchAll(PDO::FETCH_ASSOC);
-    }catch(Exception $e){
-      $this->result = '<h1>Oops, something went wrong!</h1><p>Please contact an administrator: ERROR CODE: 2100.</p>';
+    } catch(Exception $e) {
+      $this->result = $e;
       exit;
     }
 
@@ -47,6 +47,24 @@ class Sermon {
         $sql->bindParam(3, $this->downloadUrl);
         $sql->bindParam(4, $this->speaker);
         $sql->bindParam(5, $this->sermon_date);
+        $sql->execute();
+      } catch(Exception $e) {
+        $this->result = $e;
+        exit;
+      }
+      $this->result = 'Success';
+    else:
+      $this->result = 'Failed';
+    endif;
+  }
+
+  public function deleteSermon() {
+    $this->setupDb();
+    if (isset($this->sermonId)):
+      try {
+        $sql = $this->db->prepare(" DELETE FROM sermons
+                                    WHERE id = ?");
+        $sql->bindParam(1, $this->id);
         $sql->execute();
       } catch(Exception $e) {
         $this->result = $e;
