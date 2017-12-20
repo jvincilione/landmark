@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST'):
       header("HTTP/1.1 200");
     elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE'):
       $user = new User;
-      $user->username = $_COOKIE['username'];
-      $user->guid = $_COOKIE['guid'];
+      $user->username = $_COOKIE['lbc-username'];
+      $user->guid = $_COOKIE['lbc-guid'];
       if ($user->isCookieValid()):
         $sermons->id = $_GET['id'];
         $sermons->deleteSermon();

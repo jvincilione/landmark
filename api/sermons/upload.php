@@ -7,8 +7,8 @@ function upload() {
   // this file is included in another file that requires the User class,
   // so it is available in this scope as well
   $user = new User;
-  $user->username = $_COOKIE['username'];
-  $user->guid = $_COOKIE['guid'];
+  $user->username = $_COOKIE['lbc-username'];
+  $user->guid = $_COOKIE['lbc-guid'];
   if (!$user->isCookieValid()):
     $response['status'] = 401;
     $response['status_message'] = 'unauthorized';
