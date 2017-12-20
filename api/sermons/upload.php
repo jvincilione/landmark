@@ -18,8 +18,8 @@ function upload() {
     $die = true;
   endif;
 
-  $title = $json['title'];
-  $date = $json['date'];
+  $title = $json->title;
+  $date = $json->date;
 
   $downloadUrl = '/sermons-audio/' . strtolower(str_replace(' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $title))) . '-' . $date;
 
@@ -32,7 +32,7 @@ function upload() {
   $sermon = new Sermon;
   $sermon->title = $title;
   $sermon->sermon_date = $date;
-  $sermon->speaker = $json['speaker'];
+  $sermon->speaker = $json->speaker;
   $sermon->type = "Audio";
 
   if(!file_exists($downloadUrl) && !isset($die)):

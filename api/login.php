@@ -7,8 +7,8 @@ $obj = file_get_contents('php://input');
 $json = json_decode($obj);
 
 $user = new User;
-$user->username = $json['username'];
-$user->password = $json['password'];
+$user->username = $json->username;
+$user->password = $json->password;
 $user->login();
 
 $response['data'] = $user->result;
