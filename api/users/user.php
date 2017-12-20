@@ -18,7 +18,7 @@ try {
     $response['status'] = 204;
     $response['status_message'] = 'ok';
     header("HTTP/1.1 204");
-  elseif ($_SERVER['REQUEST_METHOD'] !== 'POST'):
+  elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):
     $obj = file_get_contents('php://input');
     $json = json_decode($obj);
     $user->username = $json['username'];

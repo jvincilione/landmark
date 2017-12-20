@@ -18,20 +18,17 @@ class Sermon {
     $this->setupDb();
 
     try{
-      $results = $this->db->prepare(" SELECT title, sermon_date, download_link, speaker, id
+      $results = $this->db->prepare(" SELECT title, sermon_date, download_link, speaker, kp_sermon
                                       FROM sermons
                                       WHERE type = ?
                                       ORDER BY sermon_date DESC ");
       $results->bindParam(1, $this->type);
       $results->execute();
-      $result = $results->fetchAll(PDO::FETCH_ASSOC);
+      $this->result = $results->fetchAll(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
       $this->result = $e;
       exit;
     }
-
-    //result
-    $this->result = $result;
   }
 
   public function addSermon() {
