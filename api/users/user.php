@@ -21,8 +21,8 @@ try {
   elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):
     $obj = file_get_contents('php://input');
     $json = json_decode($obj);
-    $user->username = $json['username'];
-    $user->password = $json['password'];
+    $user->username = $json->username;
+    $user->password = $json->password;
     $user->addUser();
 
     $response['data'] = $user->result;
