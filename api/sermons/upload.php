@@ -3,6 +3,7 @@
 function upload() {
   $obj = file_get_contents('php://input');
   $json = json_decode($obj);
+  $response = array();
   // set defaults
   $allowed_filetypes = array('mp3');
   // $max_filesize = 51200000; // Maximum filesize in BYTES (currently 50MB).
@@ -54,9 +55,8 @@ function upload() {
     $response['status'] = 200;
     $response['status_message'] = 'ok';
     $response['data'] = $sermon->result;
-
-    $json_response = json_encode($response);
-    echo $json_response;
+;
+    echo json_encode($response);
   else:
     header("HTTP/1.1 500");
 
@@ -64,8 +64,7 @@ function upload() {
     $response['status_message'] = 'There was an error';
     $response['data'] = $sermon->result;
 
-    $json_response = json_encode($response);
-    echo $json_response;
+    echo json_encode($response);
     exit();
   endif;
 }

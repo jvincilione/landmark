@@ -1,7 +1,7 @@
 <?php
 header("Content-Type:application/json");
-require('./db/constants.php');
-require('./users/user.class.php');
+require('../db/constants.php');
+require('./user.class.php');
 
 $obj = file_get_contents('php://input');
 $json = json_decode($obj);
@@ -11,6 +11,7 @@ $user->username = $json->username;
 $user->password = $json->password;
 $user->login();
 
+$response = array();
 $response['data'] = $user->result;
 $response['status'] = 200;
 $response['status_message'] = 'ok';

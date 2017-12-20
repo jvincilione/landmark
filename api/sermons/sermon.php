@@ -5,6 +5,7 @@ require('./sermon.class.php');
 if ($_SERVER['REQUEST_METHOD'] !== 'POST'):
   $sermons = new Sermon;
   $sermons->type = "Audio";
+  $response = array();
   try {
     if ($_SERVER['REQUEST_METHOD'] === 'GET'):
       $sermons->getSermons();

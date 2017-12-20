@@ -9,7 +9,7 @@ class User {
 
   // sets up the database connection
   private function setupDb(){
-    include('../db/config.php');
+    include('config.php');
   }
 
   public function login() {
@@ -39,8 +39,9 @@ class User {
       try {
         $sql = $this->db->prepare(" SELECT Count(*)
                                     FROM users
-                                    WHERE guid = ?");
+                                    WHERE guid = ? AND username = ?");
         $sql->bindParam(1, $this->guid);
+        $sql->bindParam(2, $this->username);
         $sql->execute();
         $this->result = $sql->fetchColumn() === 1 ? true : false;
       } catch (Exception $e) {

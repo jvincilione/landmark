@@ -4,6 +4,7 @@ require('../db/constants.php');
 require('./user.class.php');
 
 $user = new User;
+$response = array();
 try {
   if ($_SERVER['REQUEST_METHOD'] === 'GET'):
     $user->getUsers();
