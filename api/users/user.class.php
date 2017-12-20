@@ -35,18 +35,21 @@ class User {
 
   public function isCookieValid() {
     $this->setupDb();
-    if (isset($this->guid)):
+    $result = false;
+    if (isset($this->guid) && isset($this->username)):
       try {
         $sql = $this->db->prepare(" SELECT Count(*)
                                     FROM users
-                                    WHERE guid = ?");
+                                    WHERE guid = ? AND username = ?");
         $sql->bindParam(1, $this->guid);
+        $sql->bindParam(2, $this->username);
         $sql->execute();
-        $this->result = $sql->fetchColumn() === 1 ? true : false;
+        $result = $sql->fetchColumn() === 1 ? true : false;
       } catch (Exception $e) {
-        $this->result = $e;
+        $result = false;
       }
     endif;
+    return $result;
   }
 
   public function getUsers() {
