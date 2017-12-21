@@ -30,10 +30,19 @@ try {
   elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):
     $obj = file_get_contents('php://input');
     $json = json_decode($obj);
+
+    $fullName = $json->fullName;
+    $position = $json->position;
+    if (!isset($fullName)) {
+      $fullName = '';
+    }
+    if (!isset($position)) {
+      $position = '';
+    }
     $user->username = $json->username;
     $user->password = $json->password;
-    $user->fullName = $json->fullName || '';
-    $user->position = $json->position || '';
+    $user->fullName = $fullName;
+    $user->position = $position;
     $user->addUser();
 
     $response['data'] = $user->result;
