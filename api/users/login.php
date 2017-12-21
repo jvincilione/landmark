@@ -14,8 +14,8 @@ $user->login();
 $response = array();
 
 if (isset($user->result) && isset($user->result['kp_user'])):
-  setcookie('lbc-username', $user->result['username'], time() + (86400 * 30));
-  setcookie('lbc-guid', $user->result['guid'], time() + (86400 * 30));
+  setcookie('lbc-username', $user->result['username'], time() + (86400 * 30), '/');
+  setcookie('lbc-guid', $user->result['guid'], time() + (86400 * 30), '/');
   $response['data'] = $user->result;
   $response['status'] = 200;
   $response['status_message'] = 'ok';
