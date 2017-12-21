@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent {
 
   constructor(
     private adminService: AdminService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   public login(): void {
@@ -22,6 +24,9 @@ export class LoginComponent {
         (user) => {
           this.adminService.user = user;
           this.toastr.success('', 'Success!');
+          setTimeout(() => {
+            this.router.navigateByUrl('/admin/sermon');
+          }, 1500);
         },
         (error) => {
           console.log(error);
