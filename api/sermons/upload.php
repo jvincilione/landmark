@@ -6,10 +6,11 @@ function upload() {
   // so it is available in this scope as well
   $user = new User;
   $user->username = $_COOKIE['lbc-username'];
-  $user->guid = $_COOKIE['lbc-guid'];
+  $user->guid = urldecode($_COOKIE['lbc-guid']);
   if (!$user->isCookieValid()):
     $response['status'] = 401;
     $response['status_message'] = 'unauthorized';
+    echo $user->isCookieValid();
     header("HTTP/1.1 401");
   else:
     // set defaults
@@ -17,13 +18,13 @@ function upload() {
     // $max_filesize = 51200000; // Maximum filesize in BYTES (currently 50MB).
     $folder_name = '../../../sermons-audio/';
 
-    $fileName = $_FILES['mp3']['name'];
+    $fileName = $_FILES['file']['name'][0];
 
     // Get the extension from the filename.
     $ext = pathinfo($fileName, PATHINFO_EXTENSION);
 
     // Check if the filetype is allowed, if not DIE and inform the user.
-    if(!in_array($ext,$allowed_filetypes)):
+    if(!in_array($ext, $allowed_filetypes)):
       $die = true;
     endif;
 
@@ -45,14 +46,13 @@ function upload() {
     $sermon->sermon_date = $date;
     $sermon->speaker = $_POST['speaker'];
     $sermon->type = "Audio";
-
+    var_dump($date);
     if(!file_exists($downloadUrl) && !isset($die)):
-      if(move_uploaded_file($_FILES["mp3"]["tmp_name"], $downloadUrl)):
+      if(move_uploaded_file($_FILES['file']['tmp_name'][0], $downloadUrl)):
         $sermon->downloadUrl = $downloadUrl;
       endif;
     endif;
 
-    //run addSermon() method from Items class to add item and category to item.
     $sermon->addSermon();
 
     $result = $sermon->result;
