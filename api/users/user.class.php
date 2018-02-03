@@ -49,7 +49,7 @@ class User {
         $sql->bindParam(1, $this->guid);
         $sql->bindParam(2, $this->username);
         $sql->execute();
-        $result = $sql->fetchColumn() === 1 ? true : false;
+        $result = $sql->fetchColumn();
         $sql = null;
         $this->db = null;
       } catch (Exception $e) {
