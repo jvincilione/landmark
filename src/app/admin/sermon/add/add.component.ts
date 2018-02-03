@@ -34,7 +34,7 @@ export class AddComponent {
       }
       formData.append('title', this.title);
       formData.append('date', this.speaker);
-      formData.append('speaker', this.speaker);
+      formData.append('speaker', this.date);
       this.adminService.addSermon(formData)
         .subscribe((response) => {
           console.log(response);
