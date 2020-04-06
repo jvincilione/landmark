@@ -1,25 +1,25 @@
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { ToastrModule } from 'ngx-toastr';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ToastrModule } from 'ngx-toastr';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './common/header/header.component';
-import { HomeComponent } from './home/home.component';
-import { appRoutes } from './app.routes';
-import { PastorComponent } from './about/pastor/pastor.component';
 import { FaithComponent } from './about/faith/faith.component';
-import { ContactComponent } from './contact/contact.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { SermonsComponent } from './sermons/sermons.component';
+import { PastorComponent } from './about/pastor/pastor.component';
+import { AppComponent } from './app.component';
+import { appRoutes } from './app.routes';
 import { AppService } from './app.service';
-import { HttpClientModule } from '@angular/common/http';
+import { CalendarComponent } from './calendar/calendar.component';
+import { HeaderComponent } from './common/header/header.component';
+import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { SermonsComponent } from './sermons/sermons.component';
+import { StreamComponent } from './stream/stream.component';
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     FaithComponent,
     ContactComponent,
     CalendarComponent,
-    SermonsComponent
+    SermonsComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,
