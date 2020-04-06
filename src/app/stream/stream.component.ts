@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-stream',
   templateUrl: './stream.component.html',
+  styleUrls: ['./stream.component.scss']
 })
 export class StreamComponent {
-  static youtubeId = 'UCFUWKbJJw3_duv44jevTxWA';
+  public readonly youtubeId = 'UCFUWKbJJw3_duv44jevTxWA';
 }
