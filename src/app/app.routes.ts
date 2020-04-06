@@ -5,6 +5,7 @@ import { PastorComponent } from './about/pastor/pastor.component';
 import { ContactComponent } from './contact/contact.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { SermonsComponent } from './sermons/sermons.component';
+import { StreamComponent } from './stream/stream.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ export const appRoutes: Routes = [
   { path: 'get-in-touch', component: ContactComponent },
   { path: 'event-calendar', component: CalendarComponent },
   { path: 'sermon', component: SermonsComponent },
+  { path: 'stream', component: StreamComponent },
 
   { path: 'about', redirectTo: 'about/pastor' },
 
