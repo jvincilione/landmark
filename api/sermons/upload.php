@@ -31,7 +31,7 @@ function upload() {
     $title = $_POST['title'];
     $date = $_POST['date'];
 
-    $downloadUrl = '/sermons-audio/' . strtolower(str_replace(' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $title))) . '-' . $date;
+    $downloadUrl = '../sermons-audio/' . $date  . '-' .  strtolower(str_replace(' ', '-', preg_replace("/[^A-Za-z0-9 ]/", '', $title))) . '.mp3';
 
     if (strpos($date,'/') !== false) {
       $exp = explode('/', $date);
@@ -46,9 +46,9 @@ function upload() {
     $sermon->sermon_date = $date;
     $sermon->speaker = $_POST['speaker'];
     $sermon->type = "Audio";
-    var_dump($date);
-    if(!file_exists($downloadUrl) && !isset($die)):
-      if(move_uploaded_file($_FILES['file']['tmp_name'][0], $downloadUrl)):
+
+    if(!file_exists('../' . $downloadUrl) && !isset($die)):
+      if(move_uploaded_file($_FILES['file']['tmp_name'][0], '../' . $downloadUrl)):
         $sermon->downloadUrl = $downloadUrl;
       endif;
     endif;
@@ -56,16 +56,12 @@ function upload() {
     $sermon->addSermon();
 
     $result = $sermon->result;
-
-    if (isset($result) && $result = "Success" && !isset($die)):
+    echo isset($result) . ' ' . $result;
+    if (isset($result) && $result === 'Success' && !isset($die)):
       header("HTTP/1.1 200");
-
-      $sermon->getSermons();
-
       $response['status'] = 200;
       $response['status_message'] = 'ok';
       $response['data'] = $sermon->result;
-  ;
       echo json_encode($response);
     else:
       header("HTTP/1.1 500");

@@ -35,9 +35,7 @@ class Sermon {
 
   public function addSermon() {
     $this->setupDb();
-
     if (isset($this->downloadUrl)):
-
       try {
         $sql = $this->db->prepare(" INSERT INTO sermons (title, type, download_link, speaker, sermon_date)
                                     VALUES (?, ?, ?, ?, ?)");
@@ -49,13 +47,13 @@ class Sermon {
         $sql->execute();
         $sql = null;
         $this->db = null;
+	      $this->result = 'Success';
       } catch(Exception $e) {
-        $this->result = $e;
+        $this->result = 'Error adding sermon to database: ' . $this->title;
         exit;
       }
-      $this->result = 'Success';
     else:
-      $this->result = 'Failed';
+      $this->result = 'Failed - Error creating download URI.';
     endif;
   }
 
