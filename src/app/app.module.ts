@@ -8,6 +8,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
+import { SafePipeModule } from 'safe-pipe';
 
 import { FaithComponent } from './about/faith/faith.component';
 import { PastorComponent } from './about/pastor/pastor.component';
@@ -43,7 +44,8 @@ import { StreamComponent } from './stream/stream.component';
     FormsModule,
     ToastrModule.forRoot(),
     NgxDatatableModule,
-    HttpClientModule
+    HttpClientModule,
+    SafePipeModule
   ],
   providers: [
     AppService
