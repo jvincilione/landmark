@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm p-0">
-      <iframe class="live-stream" src="https://www.youtube.com/embed/live_stream?channel={{youtubeId}}" frameborder="0"></iframe>
+      <iframe class="live-stream" [src]="youtubeUrl | safe: 'resourceUrl'" frameborder="0"></iframe>
     </div>
   </div>
 </div>
