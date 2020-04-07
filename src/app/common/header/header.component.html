@@ -1,10 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="['/']">LBC</a>
-  <button class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          (click)="isCollapsed = !isCollapsed"
-          aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
+    aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -14,24 +11,19 @@
         <a class="nav-link" [routerLink]="['/']">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="['about', 'pastor']"
-           routerLinkActive="active">Our Pastor</a>
+        <a class="nav-link" [routerLink]="['about', 'pastor']" routerLinkActive="active">Our Pastor</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="['about', 'faith']"
-           routerLinkActive="active">Statment of Faith</a>
+        <a class="nav-link" [routerLink]="['about', 'faith']" routerLinkActive="active">Statment of Faith</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="['get-in-touch']"
-           routerLinkActive="active">Get in Touch</a>
+        <a class="nav-link" [routerLink]="['get-in-touch']" routerLinkActive="active">Get in Touch</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"
-           [routerLink]="['sermon']"
-           routerLinkActive="active">Sermons</a>
+        <a class="nav-link" [routerLink]="['sermon']" routerLinkActive="active">Sermons</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['stream']" routerLinkActive="active">Live Stream</a>
       </li>
     </ul>
     <span>
